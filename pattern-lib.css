@@ -355,7 +355,7 @@ p.small {
 
 .button.tertiary:hover:not(:active):not(.active),
 .button.tertiary.hovered:not(:active):not(.active) {
-  color: var(--valo-color-primary-50pct);
+  color: var(--valo-color-black);
 }
 
 .button.tertiary:active,
