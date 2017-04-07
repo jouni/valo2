@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vaadin Valo Pattern Library</title>
+    <link rel="stylesheet" href="pattern-lib.css">
+    <style>
+      .light-ui,
+      .dark-ui {
+        width: 50%;
+        float: left;
+        min-width: 400px;
+      }
+
+      body {
+        min-width: 800px;
+      }
+
+      .colors .swatch {
+        display: inline-block;
+        width: 80px;
+        vertical-align: top;
+        text-align: center;
+        margin: var(--valo-spacing-xs);
+        padding: var(--valo-spacing-s);
+        box-sizing: border-box;
+        border-radius: 3px;
+      }
+
+      .colors .color {
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        overflow: hidden;
+        line-height: 64px;
+        font-weight: 500;
+        margin: 0 auto;
+      }
+
+      .light-ui .colors .whites .swatch {
+        background-color: var(--valo-color-primary);
+      }
+
+      .text-fields .text-field {
+        margin-right: var(--valo-spacing-m);
+      }
+
+      .buttons .button {
+        width: 112px;
+        margin: var(--valo-spacing-s) var(--valo-spacing-s);
+      }
+
+      .overlays .overlay {
+        width: 150px;
+        height: 150px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 var(--valo-spacing-xxl) var(--valo-spacing-xxl) 0;
+        color: var(--valo-color-black-50pct);
+        font-weight: 500;
+      }
+
+      .dark-ui .overlays .overlay {
+        color: var(--valo-color-white-50pct);
+      }
+
+      .date-pickers .date-picker {
+        margin: 0 var(--valo-spacing-xxl) var(--valo-spacing-xxl) 0;
+      }
+
+    </style>
+
+    <script>
+    // Enable :active styles on iOS
+    document.addEventListener("touchstart", function(){});
+
+    document.addEventListener("DOMContentLoaded", function(){
+      var patterns = document.body.innerHTML;
+      var scrollTop = document.body.scrollTop;
+
+      document.body.innerHTML = `
+        <div class="light-ui">
+          ${patterns}
+        </div>
+
+        <div class="dark-ui">
+          ${patterns}
+        </div>
+      `;
+
+      document.body.scrollTop = scrollTop;
+    });
+    </script>
+  </head>
+  <body>
+
+
+    <section class="spacing-xxxl">
+      <h1>Atoms</h1>
+
+      <p class="ingress">Fundamental pieces of the visual style, like text styles, colors and common sizing and spacing values.</p>
+    </section>
+
+
+
+
+    <section class="background-color-50 spacing-wide-xxl typography">
+      <h2>Typography</h2>
+
+      <p>The platform default font is used. On macOS and iOS the default font is San Francisco. On Android the default font is Roboto. On Windows the default font is Segoe UI. On Ubuntu the default font is Ubuntu. The fallback font is Helvetica/Arial.</p>
+
+      <h4>Header level 1</h4>
+      <h1>Main title</h1>
+
+      <h4>Ingress text</h4>
+      <p class="ingress">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <h4>Header level 2</h4>
+      <h2>Subtitle for something else</h2>
+
+      <h4>Header level 3</h4>
+      <h3>Section header</h3>
+
+      <h4>Plain text</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <h4>Small text</h4>
+      <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </section>
+
+
+
+
+
+
+
+    <section class="spacing-wide-xxl colors">
+      <h2>Colors</h2>
+
+      <h3>Primary</h3>
+      <div class="swatch"><div class="color" style="background-color: var(--valo-color-primary); color: var(--valo-color-primary-contrast)"></div></div>
+      <div class="swatch"><div class="color background-color-50" style="color: var(--valo-color-primary-text)">Text</div></div>
+
+      <h3>Black</h3>
+      <div class="blacks">
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black); color: var(--valo-color-white)">100%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-90pct); color: var(--valo-color-white)">90%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-80pct); color: var(--valo-color-white)">80%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-70pct); color: var(--valo-color-white)">70%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-60pct); color: var(--valo-color-white)">60%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-50pct); color: var(--valo-color-white)">50%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-40pct); color: var(--valo-color-white)">40%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-30pct); color: var(--valo-color-white)">30%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-20pct); color: var(--valo-color-white)">20%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-10pct); color: var(--valo-color-white)">10%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-black-5pct); color: var(--valo-color-white)">5%</div></div>
+      </div>
+
+      <h3>White</h3>
+      <div class="whites">
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white); color: var(--valo-color-black-60pct)">100%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-90pct); color: var(--valo-color-black-60pct)">90%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-80pct); color: var(--valo-color-black-60pct)">80%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-70pct); color: var(--valo-color-black-60pct)">70%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-60pct); color: var(--valo-color-black-60pct)">60%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-50pct); color: var(--valo-color-white-60pct)">50%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-40pct); color: var(--valo-color-white-60pct)">40%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-30pct); color: var(--valo-color-white-60pct)">30%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-20pct); color: var(--valo-color-white-60pct)">20%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-10pct); color: var(--valo-color-white-60pct)">10%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-5pct); color: var(--valo-color-white-60pct)">5%</div></div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="spacing-xxxl">
+      <h1>Elements</h1>
+
+      <p class="ingress">The base building blocks of any UI, with a variety of styles and sizes to accommodate any situation.</p>
+    </section>
+
+    <section class="background-color-50 spacing-wide-xxl text-fields">
+      <h2>Text fields</h2>
+
+      <p>Text fields come in various styles and sizes which can be combined together.</p>
+
+      <h3>States</h3>
+
+      <input type="text" class="text-field" value="" placeholder="Placeholder">
+      <input type="text" class="text-field focused" value="Focused" placeholder="Placeholder">
+      <input type="text" class="text-field" readonly value="Readonly" placeholder="Placeholder">
+      <input type="text" class="text-field" disabled value="Disabled" placeholder="Placeholder">
+      <input type="text" class="text-field invalid" value="Invalid" placeholder="Placeholder">
+
+      <h3>Sizes</h3>
+      <input type="text" class="text-field xsmall" value="Extra small" placeholder="Placeholder">
+      <input type="text" class="text-field small" value="Small" placeholder="Placeholder">
+      <input type="text" class="text-field" value="Medium (normal)" placeholder="Placeholder">
+      <input type="text" class="text-field large" value="Large" placeholder="Placeholder">
+    </section>
+
+
+
+
+
+
+
+    <section class="spacing-wide-xxl buttons">
+      <h2>Buttons</h2>
+
+      <p>Buttons come in various styles and sizes which can be combined together.</p>
+
+      <h3>Styles &amp; States</h3>
+
+      <div class="button tertiary">Tertiary</div>
+      <div class="button">Secondary</div>
+      <div class="button primary">Primary</div><br>
+
+      <div class="button tertiary" disabled>Disabled</div>
+      <div class="button" disabled>Disabled</div>
+      <div class="button primary" disabled>Disabled</div><br>
+
+      <div class="button tertiary hovered">Hover</div>
+      <div class="button hovered">Hover</div>
+      <div class="button primary hovered">Hover</div><br>
+
+      <div class="button tertiary active">Pressed</div>
+      <div class="button active">Pressed</div>
+      <div class="button primary active">Pressed</div><br>
+
+      <div class="button tertiary focus-ring">Focused</div>
+      <div class="button focus-ring">Focused</div>
+      <div class="button primary focus-ring">Focused</div><br>
+
+
+      <h3>Sizes</h3>
+      <div class="button xsmall">Extra Small</div>
+      <div class="button small">Small</div>
+      <div class="button">Medium</div>
+      <div class="button large">Large</div>
+    </section>
+
+
+
+
+
+
+    <section class="background-color-50 spacing-wide-xxl overlays">
+      <h2>Overlays</h2>
+
+      <div class="overlay">Normal</div>
+      <div class="overlay raised">Raised</div>
+
+    </section>
+
+
+
+
+
+    <section class="spacing-wide-xxl menus">
+      <h2>Menus</h2>
+
+      <div class="menu overlay">
+        <div class="menu-item">Option one</div>
+        <div class="menu-item focused">Option two, focused</div>
+        <div class="menu-item">Option three</div>
+        <div class="menu-item selected">Option four, selected</div>
+        <div class="menu-item">Option five</div>
+        <div class="menu-item">Option six</div>
+        <div class="menu-divider"></div>
+        <div class="menu-item disabled">Disabled option</div>
+        <div class="menu-item disabled">Option eight, disabled</div>
+        <div class="menu-item">Option nine</div>
+      </div>
+
+      <div class="menu">
+        <div class="menu-item">Option one</div>
+        <div class="menu-item focused">Option two, focused</div>
+        <div class="menu-item">Option three</div>
+        <div class="menu-item selected">Option four, selected</div>
+        <div class="menu-item">Option five</div>
+        <div class="menu-item">Option six</div>
+        <div class="menu-divider"></div>
+        <div class="menu-item disabled">Disabled option</div>
+        <div class="menu-item disabled">Option eight, disabled</div>
+        <div class="menu-item">Option nine</div>
+      </div>
+
+    </section>
+
+
+
+    <section class="background-color-50 spacing-wide-xxl date-pickers">
+      <h2>Date pickers</h2>
+
+      <div class="date-picker overlay">
+        <div class="months">
+          <div class="month">
+            <div class="month-name">May 2017</div>
+            <div class="month-grid">
+              <span class="week weekday"></span>
+              <span class="weekday">Mon</span>
+              <span class="weekday">Tue</span>
+              <span class="weekday">Wed</span>
+              <span class="weekday">Thu</span>
+              <span class="weekday">Fri</span>
+              <span class="weekday">Sat</span>
+              <span class="weekday">Sun</span>
+
+              <span class="week">18</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+
+              <span class="week">19</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+
+              <span class="week">20</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+
+              <span class="week">21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+              <span>25</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+
+              <span class="week">22</span>
+              <span>29</span>
+              <span>30</span>
+              <span>31</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="month">
+            <div class="month-name">June 2017</div>
+            <div class="month-grid">
+              <span class="week"></span>
+              <span class="weekday">Mon</span>
+              <span class="weekday">Tue</span>
+              <span class="weekday">Wed</span>
+              <span class="weekday">Thu</span>
+              <span class="weekday">Fri</span>
+              <span class="weekday">Sat</span>
+              <span class="weekday">Sun</span>
+
+              <span class="week">23</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+
+              <span class="week">24</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+
+              <span class="week">25</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+
+              <span class="week">26</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+              <span>25</span>
+
+              <span class="week">27</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+              <span>29</span>
+              <span>30</span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="years">
+          <div class="mask">
+            <div>2012</div>
+            <div>2013</div>
+            <div>2014</div>
+            <div>2015</div>
+            <div>2016</div>
+            <div class="selected">2017</div>
+            <div>2018</div>
+            <div>2019</div>
+            <div>2020</div>
+            <div>2021</div>
+            <div>2022</div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="button tertiary">Today</div>
+          <div class="button tertiary">Cancel</div>
+        </div>
+      </div>
+
+    </section>
+
+  </body>
+</html>
