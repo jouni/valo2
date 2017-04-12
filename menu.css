@@ -1,0 +1,46 @@
+.menu {
+  width: 230px;
+  display: inline-block;
+  padding: var(--valo-spacing-s) 0;
+  margin: 0 var(--valo-spacing-l) var(--valo-spacing-l) 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: var(--valo-spacing-wide-s);
+  position: relative;
+}
+
+.menu-item.focused::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--valo-color-black-10pct);
+}
+
+.menu-item.selected {
+  font-weight: 500;
+  color: var(--valo-color-text-primary);
+}
+
+.menu-item.disabled {
+  color: var(--valo-color-text-disabled);
+}
+
+.menu-divider {
+  height: 1px;
+  margin: var(--valo-spacing-s) 0;
+  background-color: var(--valo-color-black-10pct);
+}
+
+.dark.ui .menu-item.focused::after {
+  background-color: var(--valo-color-white-10pct);
+}
+
+.dark.ui .menu-divider {
+  background-color: var(--valo-color-white-10pct);
+}

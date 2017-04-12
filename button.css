@@ -1,0 +1,106 @@
+.button {
+  border: 0;
+  padding: var(--valo-grid-size) calc(var(--valo-grid-size) * 2);
+  font-family: var(--valo-font-family);
+  font-size: var(--valo-font-size);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--valo-color-text-primary);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 var(--valo-color-black-10pct),
+              0 1px 2px 1px var(--valo-color-black-10pct);
+  transition: box-shadow 180ms;
+  margin: 0;
+  display: inline-flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.button:not(.tertiary) {
+  background-color: var(--valo-color-background);
+}
+
+.button:hover:not(:active):not(.active):not(.tertiary),
+.button.hovered:not(:active):not(.active):not(.tertiary) {
+  box-shadow: 0 1px 1px 0 var(--valo-color-black-10pct),
+              0 1px 2px 1px var(--valo-color-black-10pct),
+              0 3px 3px 0 var(--valo-color-black-10pct),
+              0 3px 9px 0 var(--valo-color-black-5pct);
+}
+
+.button:active:not(.tertiary),
+.button.active:not(.tertiary) {
+  background-image: linear-gradient(var(--valo-color-black-10pct), var(--valo-color-black-10pct));
+  transition-duration: 50ms;
+}
+
+.button.focus-ring:not(:active) {
+  box-shadow: 0 0 0 2px var(--valo-color-primary-50pct),
+              0 1px 1px 0 var(--valo-color-black-10pct),
+              0 1px 2px 1px var(--valo-color-black-10pct);
+}
+
+.button.tertiary {
+  box-shadow: none;
+  transition: color 80ms;
+}
+
+.button.tertiary:hover,
+.button.tertiary.hovered,
+.button.tertiary.active {
+  color: var(--valo-color-text);
+}
+
+.button.tertiary:active,
+.button.tertiary.active {
+  opacity: 0.7;
+}
+
+.button.primary {
+  background-color: var(--valo-color-primary);
+  color: var(--valo-color-primary-contrast);
+  --valo-color-black-10pct: var(--valo-color-black-20pct);
+}
+
+.button[disabled] {
+  pointer-events: none;
+  box-shadow: none;
+  color: var(--valo-color-text-disabled);
+}
+
+.button[disabled]:not(.tertiary) {
+  background-color: var(--valo-color-black-10pct);
+}
+
+.button.primary[disabled] {
+  background-color: var(--valo-color-black-30pct);
+  color: var(--valo-color-white-70pct);
+}
+
+
+.dark.ui .button:not(.tertiary):not(.primary):not([disabled]) {
+  background-color: var(--valo-color-white-10pct);
+  color: var(--valo-color-white-90pct);
+}
+
+.dark.ui .button.tertiary:hover:not(:active):not(.active),
+.dark.ui .button.tertiary.hovered:not(:active):not(.active) {
+  color: var(--valo-color-white);
+}
+
+.dark.ui .button.tertiary:active,
+.dark.ui .button.tertiary.active {
+  color: inherit;
+}
+
+.dark.ui .button[disabled]:not(.tertiary) {
+  background-color: var(--valo-color-white-10pct);
+}
+
+.dark.ui .button.primary[disabled] {
+  background-color: var(--valo-color-white-30pct);
+}

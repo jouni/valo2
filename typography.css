@@ -1,0 +1,62 @@
+h1,
+h2,
+h3 {
+  color: var(--valo-color-text-heading);
+  line-height: 1.25;
+  letter-spacing: -0.03125em;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: calc(var(--valo-font-size) * 3);
+  margin-top: var(--valo-spacing-xxl);
+  margin-bottom: var(--valo-spacing-xl);
+}
+
+h2 {
+  font-size: calc(var(--valo-font-size) * 2);
+  margin-top: var(--valo-spacing-xl);
+  margin-bottom: var(--valo-spacing-l);
+}
+
+h3 {
+  font-size: calc(var(--valo-font-size) * 1.375);
+  font-weight: 500;
+  margin-top: var(--valo-spacing-xl);
+  margin-bottom: var(--valo-spacing-m);
+}
+
+h4 {
+  font-weight: 500;
+  font-size: calc(var(--valo-font-size) * 0.75);
+  color: var(--valo-color-text-secondary);
+  letter-spacing: 0.075em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin-top: var(--valo-spacing-xl);
+  margin-bottom: var(--valo-spacing-s);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--valo-spacing-xl);
+  font-size: var(--valo-font-size);
+  line-height: var(--valo-line-height);
+}
+
+h4 + h1,
+h4 + h2,
+h4 + h3 {
+  margin-top: 0;
+}
+
+p.ingress {
+  font-size: calc(var(--valo-font-size) * 1.375);
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: var(--valo-spacing-l);
+}
+
+p.small {
+  --valo-line-height: 1.575;
+}

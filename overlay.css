@@ -1,0 +1,17 @@
+.overlay {
+  border-radius: 3px;
+  background-color: var(--valo-color-background);
+  background-image: linear-gradient(var(--valo-color-white-5pct), var(--valo-color-white-5pct));
+  --valo-overlay-outline-color: var(--valo-color-black-5pct);
+  box-shadow: 0 0 0 1px var(--valo-overlay-outline-color),
+              0 6px 14px -4px var(--valo-color-black-40pct);
+}
+
+.overlay.raised {
+  box-shadow: 0 0 0 1px var(--valo-overlay-outline-color),
+              0 22px 44px -4px var(--valo-color-black-40pct);
+}
+
+.dark.ui .overlay {
+  --valo-overlay-outline-color: var(--valo-color-white-10pct);
+}

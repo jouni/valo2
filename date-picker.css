@@ -1,0 +1,201 @@
+.date-picker {
+  width: calc(var(--valo-grid-size) * 49);
+  height: calc(var(--valo-grid-size) * 54);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.date-picker .months {
+  width: calc(var(--valo-grid-size) * 41);
+  /* TODO should probably use two flex containers instead */
+  height: calc(100% - var(--valo-grid-size) * 6.5);
+  overflow: auto;
+
+  /* TODO browser support for gradient masks is spotty (WebKit/Blink/Firefox53).
+     Could look into using SVG masks for older Firefox, but doesn’t seem worth the trouble. */
+  -webkit-mask-image: linear-gradient(#000 85%, transparent);
+  mask-image: linear-gradient(#000 85%, transparent);
+}
+
+.date-picker .years {
+  width: calc(var(--valo-grid-size) * 8);
+  height: 100%;
+  background: var(--valo-color-black-10pct);
+  opacity: 0.5;
+  transition: opacity 180ms;
+  overflow: hidden;
+  position: relative;
+}
+
+.date-picker .years::after {
+  content: "";
+  position: absolute;
+  /* TODO should obviously be centered, but now I’m centering it to match a year number */
+  top: 49.7%;
+  right: 0;
+  border: 6px solid;
+  border-color: transparent var(--valo-color-text-tertiary) transparent transparent;
+}
+
+.date-picker .years:hover {
+  opacity: 1;
+}
+
+.date-picker .years .mask {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-right: 20px;
+  -webkit-mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+  mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+}
+
+.date-picker .years .mask div {
+  height: calc(var(--valo-grid-size) * 5);
+  font-size: calc(var(--valo-font-size) * 0.875);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker .years .focused {
+  font-weight: 500;
+  color: var(--valo-color-text-heading);
+}
+
+.date-picker .years .selected::before {
+  content: "•";
+  color: var(--valo-color-text-primary);
+  width: 0;
+  transform: translateX(-0.7em);
+}
+
+.date-picker .toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: calc(var(--valo-grid-size) * 8);
+  padding: var(--valo-spacing-s);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date-picker .month {
+  padding: var(--valo-spacing-tall-s);
+  box-sizing: border-box;
+}
+
+.date-picker .month-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.date-picker .month-grid span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(92% / 7);
+  height: calc(var(--valo-grid-size) * 5);
+  position: relative;
+}
+
+.date-picker .month-grid .selected {
+  color: var(--valo-color-primary-contrast);
+  font-weight: 500;
+}
+
+.date-picker .month-grid .selected::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  background-color: var(--valo-color-primary);
+  border-radius: 3px;
+}
+
+.date-picker .month-grid .week {
+  width: 8%;
+  font-size: calc(var(--valo-font-size) * 0.75);
+  color: var(--valo-color-text-tertiary);
+}
+
+.date-picker .month-grid .weekday {
+  height: calc(var(--valo-grid-size) * 3);
+  font-size: calc(var(--valo-font-size) * 0.75);
+  color: var(--valo-color-text-tertiary);
+}
+
+.date-picker .month-name {
+  text-align: center;
+  font-weight: 500;
+  color: var(--valo-color-text-heading);
+  margin-bottom: var(--valo-spacing-s);
+}
+
+.dark.ui .date-picker .years {
+  background: var(--valo-color-black-20pct);
+}
+
+/* TODO only for demo, this relies on the layout of the demo page being split 50/50 for light/dark */
+/* Should use container queries instead (or iron-resizable) */
+@media screen and (max-width: 1000px) {
+  .date-picker {
+    flex-direction: column;
+    width: 100%;
+    min-width: 300px;
+    height: auto;
+  }
+
+  .date-picker .months,
+  .date-picker .years {
+    width: 100%;
+  }
+
+  .date-picker .years {
+    order: 3;
+    height: calc(var(--valo-grid-size) * 6);
+  }
+
+  .date-picker .years .mask {
+    flex-direction: row;
+    white-space: nowrap;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+
+  .date-picker .years .mask div {
+    display: inline-flex;
+    height: 100%;
+    width: 4em;
+  }
+
+  .date-picker .years .selected::before {
+    transform: translate(0.8em, 0.8em);
+  }
+
+  .date-picker .months {
+    order: 2;
+    display: flex;
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .date-picker .month {
+    min-width: 100%;
+    padding-top: 0;
+  }
+
+  .date-picker .toolbar {
+    position: static;
+    order: 1;
+  }
+
+}

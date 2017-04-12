@@ -1,0 +1,83 @@
+.text-field {
+  border: 0;
+  font-family: inherit;
+  font-size: var(--valo-font-size);
+  line-height: 1.25;
+  background-color: var(--valo-color-background);
+  color: var(--valo-color-text);
+  box-shadow: 0 0 0 1px var(--valo-color-black-20pct);
+  border-radius: 3px;
+  height: calc(var(--valo-grid-size) * 4.5);
+  margin: calc(var(--valo-grid-size) * 0.75) 0;
+  width: 200px;
+  display: inline-flex;
+  align-items: center;
+  padding: calc(var(--valo-grid-size) / 2) var(--valo-grid-size);
+  box-sizing: border-box;
+  font-weight: 500;
+  outline: none;
+  transition: box-shadow 280ms;
+  -webkit-appearance: none;
+}
+
+.text-field::placeholder {
+  color: var(--valo-color-text-tertiary);
+}
+
+.text-field:hover:not(:focus):not(.focused):not(.invalid):not([readonly]):not([disabled]) {
+  box-shadow: 0 0 0 1px var(--valo-color-black-40pct);
+}
+
+.text-field[readonly],
+.text-field[disabled] {
+  box-shadow: none;
+  background-color: var(--valo-color-black-5pct);
+}
+
+.text-field[disabled] {
+  color: var(--valo-color-text-tertiary);
+  opacity: 1;
+}
+
+.text-field:focus:not([readonly]),
+.text-field.focused {
+  box-shadow: 0 0 0 2px var(--valo-color-primary-50pct),
+              0 0 0 1px var(--valo-color-black-20pct),
+              0 3px 3px 0 var(--valo-color-black-20pct);
+}
+
+.text-field.invalid {
+  box-shadow: 0 0 0 2px var(--valo-color-error-50pct),
+              0 0 0 1px var(--valo-color-black-20pct);
+}
+
+.dark.ui .text-field {
+  background-color: var(--valo-color-black-10pct);
+  box-shadow: 0 0 0 1px var(--valo-color-white-10pct);
+}
+
+.dark.ui .text-field:hover:not(:focus):not(.focused):not(.invalid):not([readonly]):not([disabled]) {
+  box-shadow: 0 0 0 1px var(--valo-color-white-30pct);
+}
+
+.dark.ui .text-field:focus:not([readonly]),
+.dark.ui .text-field.focused {
+  box-shadow: 0 0 0 2px var(--valo-color-primary-50pct),
+              0 0 0 1px var(--valo-color-white-10pct),
+              0 3px 6px 0 var(--valo-color-black-20pct);
+}
+
+.dark.ui .text-field[readonly],
+.dark.ui .text-field[disabled] {
+  box-shadow: none;
+  background-color: var(--valo-color-white-5pct);
+}
+
+/*.dark.ui .text-field[disabled] {
+  color: var(--valo-color-white-40pct);
+}*/
+
+.dark.ui .text-field.invalid {
+  box-shadow: 0 0 0 2px var(--valo-color-error-50pct),
+              0 0 0 1px var(--valo-color-white-10pct);
+}

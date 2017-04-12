@@ -5,15 +5,40 @@
     <title>Vaadin Valo Pattern Library</title>
     <link rel="stylesheet" href="pattern-lib.css">
     <style>
-      .light-ui,
-      .dark-ui {
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-width: 800px;
+      }
+
+      .ui {
         width: 50%;
         float: left;
         min-width: 400px;
       }
 
-      body {
-        min-width: 800px;
+      .spacing-xxxl {
+        padding: var(--valo-spacing-xxxl);
+      }
+
+      .spacing-wide-xxl {
+        padding: var(--valo-spacing-wide-xxl);
+      }
+
+      section > :first-child {
+        margin-top: 0;
+      }
+
+      section > :last-child {
+        margin-bottom: 0;
+      }
+
+      section:nth-child(even) {
+        background-color: var(--valo-color-black-5pct);
       }
 
       .colors .swatch {
@@ -37,10 +62,6 @@
         margin: 0 auto;
       }
 
-      .light-ui .colors .whites .swatch {
-        background-color: var(--valo-color-primary);
-      }
-
       .text-fields .text-field {
         margin-right: var(--valo-spacing-m);
       }
@@ -57,12 +78,8 @@
         justify-content: center;
         align-items: center;
         margin: 0 var(--valo-spacing-xxl) var(--valo-spacing-xxl) 0;
-        color: var(--valo-color-black-50pct);
+        color: var(--valo-color-text-secondary);
         font-weight: 500;
-      }
-
-      .dark-ui .overlays .overlay {
-        color: var(--valo-color-white-50pct);
       }
 
       .date-pickers .date-picker {
@@ -80,11 +97,11 @@
       var scrollTop = document.body.scrollTop;
 
       document.body.innerHTML = `
-        <div class="light-ui">
+        <div class="ui light">
           ${patterns}
         </div>
 
-        <div class="dark-ui">
+        <div class="ui dark">
           ${patterns}
         </div>
       `;
@@ -99,34 +116,7 @@
     <section class="spacing-xxxl">
       <h1>Atoms</h1>
 
-      <p class="ingress">Fundamental pieces of the visual style, like text styles, colors and common sizing and spacing values.</p>
-    </section>
-
-
-
-
-    <section class="background-color-50 spacing-wide-xxl typography">
-      <h2>Typography</h2>
-
-      <p>The platform default font is used. On macOS and iOS the default font is San Francisco. On Android the default font is Roboto. On Windows the default font is Segoe UI. On Ubuntu the default font is Ubuntu. The fallback font is Helvetica/Arial.</p>
-
-      <h4>Header level 1</h4>
-      <h1>Main title</h1>
-
-      <h4>Ingress text</h4>
-      <p class="ingress">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-      <h4>Header level 2</h4>
-      <h2>Subtitle for something else</h2>
-
-      <h4>Header level 3</h4>
-      <h3>Section header</h3>
-
-      <h4>Plain text</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-      <h4>Small text</h4>
-      <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p class="ingress">Fundamental pieces of the visual style, like colors, text styles and common sizing and spacing values.</p>
     </section>
 
 
@@ -135,7 +125,7 @@
 
 
 
-    <section class="spacing-wide-xxl colors">
+    <section class="background-color-black-5pct spacing-wide-xxl colors">
       <h2>Colors</h2>
 
       <h3>Primary</h3>
@@ -159,18 +149,45 @@
 
       <h3>White</h3>
       <div class="whites">
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white); color: var(--valo-color-black-60pct)">100%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-90pct); color: var(--valo-color-black-60pct)">90%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-80pct); color: var(--valo-color-black-60pct)">80%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-70pct); color: var(--valo-color-black-60pct)">70%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-60pct); color: var(--valo-color-black-60pct)">60%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-50pct); color: var(--valo-color-white-60pct)">50%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-40pct); color: var(--valo-color-white-60pct)">40%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-30pct); color: var(--valo-color-white-60pct)">30%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-20pct); color: var(--valo-color-white-60pct)">20%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-10pct); color: var(--valo-color-white-60pct)">10%</div></div>
-        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-5pct); color: var(--valo-color-white-60pct)">5%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white); color: var(--valo-color-black-90pct)">100%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-90pct); color: var(--valo-color-black-90pct)">90%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-80pct); color: var(--valo-color-black-90pct)">80%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-70pct); color: var(--valo-color-black-90pct)">70%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-60pct); color: var(--valo-color-black-90pct)">60%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-50pct); color: var(--valo-color-black-90pct)">50%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-40pct); color: var(--valo-color-black-90pct)">40%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-30pct); color: var(--valo-color-black-90pct)">30%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-20pct); color: var(--valo-color-black-90pct)">20%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-10pct); color: var(--valo-color-black-90pct)">10%</div></div>
+        <div class="swatch"><div class="color" style="background-color: var(--valo-color-white-5pct); color: var(--valo-color-black-90pct)">5%</div></div>
       </div>
+    </section>
+
+
+
+
+    <section class="spacing-wide-xxl typography">
+      <h2>Typography</h2>
+
+      <p>The platform default font is used. On macOS and iOS the default font is San Francisco. On Android the default font is Roboto. On Windows the default font is Segoe UI. On Ubuntu the default font is Ubuntu. The fallback font is Helvetica/Arial.</p>
+
+      <h4>Header level 1</h4>
+      <h1>Main title</h1>
+
+      <h4>Ingress text</h4>
+      <p class="ingress">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <h4>Header level 2</h4>
+      <h2>Subtitle for something else</h2>
+
+      <h4>Header level 3</h4>
+      <h3>Section header</h3>
+
+      <h4>Plain text</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <h4>Small text</h4>
+      <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </section>
 
 
@@ -338,7 +355,7 @@
               <span>16</span>
               <span>17</span>
               <span>18</span>
-              <span>19</span>
+              <span class="selected">19</span>
               <span>20</span>
               <span>21</span>
 
@@ -427,12 +444,152 @@
             <div>2014</div>
             <div>2015</div>
             <div>2016</div>
-            <div class="selected">2017</div>
+            <div class="focused selected">2017</div>
             <div>2018</div>
             <div>2019</div>
             <div>2020</div>
             <div>2021</div>
             <div>2022</div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="button tertiary">Today</div>
+          <div class="button tertiary">Cancel</div>
+        </div>
+      </div>
+
+      <div class="date-picker">
+        <div class="months">
+          <div class="month">
+            <div class="month-name">July 2019</div>
+            <div class="month-grid">
+              <span class="week weekday"></span>
+              <span class="weekday">Mon</span>
+              <span class="weekday">Tue</span>
+              <span class="weekday">Wed</span>
+              <span class="weekday">Thu</span>
+              <span class="weekday">Fri</span>
+              <span class="weekday">Sat</span>
+              <span class="weekday">Sun</span>
+
+              <span class="week">18</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+
+              <span class="week">19</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+
+              <span class="week">20</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+
+              <span class="week">21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+              <span>25</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+
+              <span class="week">22</span>
+              <span>29</span>
+              <span>30</span>
+              <span>31</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="month">
+            <div class="month-name">August 2019</div>
+            <div class="month-grid">
+              <span class="week"></span>
+              <span class="weekday">Mon</span>
+              <span class="weekday">Tue</span>
+              <span class="weekday">Wed</span>
+              <span class="weekday">Thu</span>
+              <span class="weekday">Fri</span>
+              <span class="weekday">Sat</span>
+              <span class="weekday">Sun</span>
+
+              <span class="week">23</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+
+              <span class="week">24</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+              <span>11</span>
+
+              <span class="week">25</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+              <span>18</span>
+
+              <span class="week">26</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+              <span>25</span>
+
+              <span class="week">27</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+              <span>29</span>
+              <span>30</span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="years">
+          <div class="mask">
+            <div>2014</div>
+            <div>2015</div>
+            <div>2016</div>
+            <div class="selected">2017</div>
+            <div>2018</div>
+            <div class="focused">2019</div>
+            <div>2020</div>
+            <div>2021</div>
+            <div>2022</div>
+            <div>2023</div>
+            <div>2024</div>
           </div>
         </div>
         <div class="toolbar">
