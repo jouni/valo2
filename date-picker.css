@@ -1,7 +1,10 @@
+/* DO NOT TAKE THESE STYLES DIRECTLY AS THE CORRECT IMPLEMENTATION. THEY ONLY ACHIEVE THE DESIRED OUTCOME, BUT ARE NOT IMPLEMENTED VERY NICELY */
+
+
 .date-picker {
-  width: 100%;
+  width: 100vw;
+  min-width: 360px;
   max-width: calc(var(--valo-grid-size) * 49);
-  min-width: 375px;
   height: calc(var(--valo-grid-size) * 54);
   display: flex;
   position: relative;
@@ -23,7 +26,8 @@
 .date-picker .years {
   width: calc(var(--valo-grid-size) * 8);
   height: 100%;
-  background: var(--valo-color-black-10pct);
+  background-color: var(--valo-color-black-10pct);
+  background-image: linear-gradient(90deg, var(--valo-color-black-5pct), transparent 4px);
   opacity: 0.5;
   transition: opacity 180ms;
   overflow: hidden;
@@ -148,82 +152,88 @@
   background: var(--valo-color-black-20pct);
 }
 
-/* TODO only for demo, this relies on the layout of the demo page being split 50/50 for light/dark */
-/* Should use container queries instead (or iron-resizable) */
-@media screen and (max-width: 1000px) {
-  .date-picker {
-    flex-direction: column;
-    min-width: 300px;
-    height: auto;
-  }
 
-  .date-picker .months,
-  .date-picker .years {
-    width: 100%;
-  }
 
-  .date-picker .years {
-    order: 3;
-    height: calc(var(--valo-grid-size) * 6);
-  }
 
-  .date-picker .years::after {
-    top: auto;
-    bottom: 0;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    border-color: transparent transparent var(--valo-color-text-tertiary) transparent;
-  }
 
-  .date-picker .years .mask {
-    flex-direction: row;
-    white-space: nowrap;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
-    padding-right: 0;
-    padding-bottom: 20px;
-  }
 
-  .date-picker .years .mask div {
-    display: inline-flex;
-    height: 100%;
-    width: 4em;
-  }
+/* Narrow viewport */
 
-  .date-picker .years .selected::before {
-    transform: translate(0.8em, -1em);
-  }
 
-  .date-picker .months {
-    order: 2;
-    display: flex;
-    height: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
 
-  .date-picker .month {
-    min-width: 100%;
-    padding-top: 0;
-    padding-right: var(--valo-spacing-xxs);
-  }
+.date-picker.small-viewport {
+  flex-direction: column;
+  max-width: 359px;
+  min-width: 300px;
+  height: auto;
+}
 
-  .date-picker .month-grid span {
-    /* TODO should have min and max height on the whole picker instead, and let the day cells flex
-    and try to fit inside iPhone 4 screen (may have to hide day names after a breakpoint perhaps) */
-    height: calc(var(--valo-grid-size) * 4.5);
-  }
+.date-picker.small-viewport .months,
+.date-picker.small-viewport .years {
+  width: 100%;
+}
 
-  .date-picker .month-grid .weekday {
-    height: calc(var(--valo-grid-size) * 2);
-  }
+.date-picker.small-viewport .years {
+  order: 3;
+  height: calc(var(--valo-grid-size) * 6);
+  background-image: linear-gradient(var(--valo-color-black-5pct), transparent 4px);
+}
 
-  .date-picker .toolbar {
-    position: static;
-    order: 1;
-    --valo-grid-size: 4px;
-    --valo-font-size: 90%;
-  }
+.date-picker.small-viewport .years::after {
+  top: auto;
+  bottom: 0;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: transparent transparent var(--valo-color-text-tertiary) transparent;
+}
 
+.date-picker.small-viewport .years .mask {
+  flex-direction: row;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  padding-right: 0;
+  padding-bottom: 20px;
+}
+
+.date-picker.small-viewport .years .mask div {
+  display: inline-flex;
+  height: 100%;
+  width: 4em;
+}
+
+.date-picker.small-viewport .years .selected::before {
+  transform: translate(0.8em, -1em);
+}
+
+.date-picker.small-viewport .months {
+  order: 2;
+  display: flex;
+  height: auto;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.date-picker.small-viewport .month {
+  min-width: 100%;
+  padding-top: 0;
+  padding-right: var(--valo-spacing-xxs);
+}
+
+.date-picker.small-viewport .month-grid span {
+  /* TODO should have min and max height on the whole picker instead, and let the day cells flex
+  and try to fit inside iPhone 4 screen (may have to hide day names after a breakpoint perhaps) */
+  height: calc(var(--valo-grid-size) * 4.5);
+}
+
+.date-picker.small-viewport .month-grid .weekday {
+  height: calc(var(--valo-grid-size) * 2);
+}
+
+.date-picker.small-viewport .toolbar {
+  position: static;
+  order: 1;
+  --valo-grid-size: 4px;
+  --valo-font-size: 90%;
 }

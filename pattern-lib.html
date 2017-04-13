@@ -84,6 +84,7 @@
 
       .date-pickers .date-picker {
         margin: 0 var(--valo-spacing-xxl) var(--valo-spacing-xxl) 0;
+        width: 75%;
       }
 
     </style>
@@ -107,6 +108,10 @@
       `;
 
       document.body.scrollTop = scrollTop;
+
+      document.querySelectorAll(".date-picker.small-viewport .years .mask").forEach(function(y) {
+        y.scrollLeft = 152;
+      });
     });
     </script>
   </head>
@@ -476,10 +481,10 @@
         </div>
       </div>
 
-      <div class="date-picker">
+      <div class="date-picker overlay small-viewport">
         <div class="months">
           <div class="month">
-            <div class="month-name">September 2019</div>
+            <div class="month-name">July 2017</div>
             <div class="month-grid">
               <span class="week weekday"></span>
               <span class="weekday">Mon</span>
@@ -520,7 +525,7 @@
               <span class="week">29</span>
               <span>17</span>
               <span>18</span>
-              <span>19</span>
+              <span class="selected">19</span>
               <span>20</span>
               <span>21</span>
               <span>22</span>
@@ -546,7 +551,7 @@
             </div>
           </div>
           <div class="month">
-            <div class="month-name">October 2019</div>
+            <div class="month-name">August 2017</div>
             <div class="month-grid">
               <span class="week weekday"></span>
               <span class="weekday">Mon</span>
@@ -615,17 +620,17 @@
         </div>
         <div class="years">
           <div class="mask">
+            <div>2012</div>
+            <div>2013</div>
             <div>2014</div>
             <div>2015</div>
             <div>2016</div>
-            <div class="selected">2017</div>
+            <div class="focused selected">2017</div>
             <div>2018</div>
-            <div class="focused">2019</div>
+            <div>2019</div>
             <div>2020</div>
             <div>2021</div>
             <div>2022</div>
-            <div>2023</div>
-            <div>2024</div>
           </div>
         </div>
         <div class="toolbar">
