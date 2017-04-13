@@ -1,0 +1,53 @@
+.device {
+  width: 30vw;
+  margin: 90px 16px;
+  position: relative;
+  background-color: var(--valo-color-black-20pct);
+  box-shadow: 0 0 0 2px var(--valo-color-black-80pct);
+  box-sizing: border-box;
+}
+
+.device::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -16px;
+  bottom: -80px;
+  left: -16px;
+  border-radius: 32px;
+  border: 2px solid var(--valo-color-black-30pct);
+  pointer-events: none;
+}
+
+.device::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--valo-color-black-30pct);
+  pointer-events: none;
+}
+
+.device.iphone4 {
+  height: 45vw;
+
+  min-width: 320px;
+  min-height: 480px;
+
+  max-width: 350px;
+  max-height: 525px;
+}
+
+.device.iphone6 {
+  height: 53vw;
+
+  min-width: 375px;
+  min-height: 667px;
+
+  max-width: 414px;
+  max-height: 736px;
+}

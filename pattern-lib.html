@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Vaadin Valo Pattern Library</title>
     <link rel="stylesheet" href="pattern-lib.css">
+    <link rel="stylesheet" href="device-frame.css">
     <style>
       html,
       body {
@@ -12,7 +13,7 @@
       }
 
       body {
-        min-width: 800px;
+        min-width: 1000px;
       }
 
       .ui {
@@ -27,6 +28,26 @@
 
       .spacing-wide-xxl {
         padding: var(--valo-spacing-wide-xxl);
+      }
+
+      @media screen and (max-width: 1200px) {
+        .spacing-xxxl {
+          padding: var(--valo-spacing-xxl);
+        }
+
+        .spacing-wide-xxl {
+          padding: var(--valo-spacing-xxl);
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+        .spacing-xxxl {
+          padding: var(--valo-spacing-xl);
+        }
+
+        .spacing-wide-xxl {
+          padding: var(--valo-spacing-xl);
+        }
       }
 
       section > :first-child {
@@ -82,9 +103,35 @@
         font-weight: 500;
       }
 
-      .date-pickers .date-picker {
-        margin: 0 var(--valo-spacing-xxl) var(--valo-spacing-xxl) 0;
-        width: 75%;
+      .menus .menu,
+      .menus .text-field {
+        width: 230px;
+      }
+
+      .date-pickers .date-picker.overlay {
+        max-width: calc(var(--valo-grid-size) * 49);
+        margin-bottom: var(--valo-spacing-xxl);
+      }
+
+      .date-pickers .device .text-field {
+        margin: 80px 20px;
+      }
+
+      .date-pickers .device .date-picker {
+        background-color: var(--valo-color-background);
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        box-shadow: 0 -1px 0 0 var(--valo-color-black-10pct);
+      }
+
+      .dark.ui .date-pickers .device .date-picker {
+        box-shadow: 0 -1px 0 0 var(--valo-color-white-10pct);
+      }
+
+      .date-pickers .device {
+        transform: scale(0.759);
+        margin: 0;
       }
 
     </style>
@@ -94,6 +141,13 @@
     document.addEventListener("touchstart", function(){});
 
     document.addEventListener("DOMContentLoaded", function(){
+
+      var datepicker = document.querySelector(".date-picker-archetype");
+
+      document.querySelectorAll(".date-picker:not(.date-picker-archetype)").forEach(function(dp) {
+        dp.innerHTML = datepicker.innerHTML;
+      })
+
       var patterns = document.body.innerHTML;
       var scrollTop = document.body.scrollTop;
 
@@ -110,7 +164,7 @@
       document.body.scrollTop = scrollTop;
 
       document.querySelectorAll(".date-picker.small-viewport .years .mask").forEach(function(y) {
-        y.scrollLeft = 152;
+        y.scrollLeft = 168;
       });
     });
     </script>
@@ -290,6 +344,7 @@
     <section class="spacing-wide-xxl menus">
       <h2>Menus</h2>
 
+      <input type="text" class="text-field focused" value="Option two, focused" placeholder="Select an option"><br>
       <div class="menu overlay">
         <div class="menu-item">Option one</div>
         <div class="menu-item focused">Option two, focused</div>
@@ -323,7 +378,11 @@
     <section class="background-color-50 spacing-wide-xxl date-pickers">
       <h2>Date pickers</h2>
 
-      <div class="date-picker overlay">
+      <p>The date picker overlay adapts to the viewport size by repositioning some elements while still retaining its core UI concepts.</p>
+
+      <h3>Large viewport (desktop/tablet)</h3>
+      <input type="text" class="text-field focused" value="07/19/2017" placeholder="Select a date">
+      <div class="date-picker-archetype date-picker overlay">
         <div class="months">
           <div class="month">
             <div class="month-name">July 2017</div>
@@ -352,7 +411,7 @@
               <span>5</span>
               <span>6</span>
               <span>7</span>
-              <span>8</span>
+              <span class="today">8</span>
               <span>9</span>
 
               <span class="week">28</span>
@@ -481,163 +540,17 @@
         </div>
       </div>
 
-      <div class="date-picker overlay small-viewport">
-        <div class="months">
-          <div class="month">
-            <div class="month-name">July 2017</div>
-            <div class="month-grid">
-              <span class="week weekday"></span>
-              <span class="weekday">Mon</span>
-              <span class="weekday">Tue</span>
-              <span class="weekday">Wed</span>
-              <span class="weekday">Thu</span>
-              <span class="weekday">Fri</span>
-              <span class="weekday">Sat</span>
-              <span class="weekday">Sun</span>
+      <h3>Large phone</h3>
+      <div class="device iphone6">
+        <input type="text" class="text-field focused" value="07/19/2017" placeholder="Select a date">
+        <div class="date-picker toolbar-on-top"></div>
+      </div><br>
 
-              <span class="week">26</span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span>1</span>
-              <span>2</span>
-
-              <span class="week">27</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-              <span>6</span>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-
-              <span class="week">28</span>
-              <span>10</span>
-              <span>11</span>
-              <span>12</span>
-              <span>13</span>
-              <span>14</span>
-              <span>15</span>
-              <span>16</span>
-
-              <span class="week">29</span>
-              <span>17</span>
-              <span>18</span>
-              <span class="selected">19</span>
-              <span>20</span>
-              <span>21</span>
-              <span>22</span>
-              <span>23</span>
-
-              <span class="week">30</span>
-              <span>24</span>
-              <span>25</span>
-              <span>26</span>
-              <span>27</span>
-              <span>28</span>
-              <span>29</span>
-              <span>30</span>
-
-              <span class="week">31</span>
-              <span>31</span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <div class="month">
-            <div class="month-name">August 2017</div>
-            <div class="month-grid">
-              <span class="week weekday"></span>
-              <span class="weekday">Mon</span>
-              <span class="weekday">Tue</span>
-              <span class="weekday">Wed</span>
-              <span class="weekday">Thu</span>
-              <span class="weekday">Fri</span>
-              <span class="weekday">Sat</span>
-              <span class="weekday">Sun</span>
-
-              <span class="week">31</span>
-              <span></span>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-              <span>6</span>
-
-              <span class="week">32</span>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-              <span>11</span>
-              <span>12</span>
-              <span>13</span>
-
-              <span class="week">33</span>
-              <span>14</span>
-              <span>15</span>
-              <span>16</span>
-              <span>17</span>
-              <span>18</span>
-              <span>19</span>
-              <span>20</span>
-
-              <span class="week">34</span>
-              <span>21</span>
-              <span>22</span>
-              <span>23</span>
-              <span>24</span>
-              <span>25</span>
-              <span>26</span>
-              <span>27</span>
-
-              <span class="week">35</span>
-              <span>28</span>
-              <span>29</span>
-              <span>30</span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-
-              <span class="week"></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        </div>
-        <div class="years">
-          <div class="mask">
-            <div>2012</div>
-            <div>2013</div>
-            <div>2014</div>
-            <div>2015</div>
-            <div>2016</div>
-            <div class="focused selected">2017</div>
-            <div>2018</div>
-            <div>2019</div>
-            <div>2020</div>
-            <div>2021</div>
-            <div>2022</div>
-          </div>
-        </div>
-        <div class="toolbar">
-          <div class="button tertiary">Today</div>
-          <div class="button tertiary">Cancel</div>
-        </div>
-      </div>
+      <h3>Small phone</h3>
+      <div class="device iphone4">
+        <input type="text" class="text-field focused" value="07/19/2017" placeholder="Select a date">
+        <div class="date-picker small-viewport"></div>
+      </div><br>
 
     </section>
 

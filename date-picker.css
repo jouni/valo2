@@ -2,9 +2,10 @@
 
 
 .date-picker {
-  width: 100vw;
-  min-width: 360px;
-  max-width: calc(var(--valo-grid-size) * 49);
+  width: 100%;
+  /*width: 100vw;*/
+  /*min-width: 360px;*/
+  /*max-width: calc(var(--valo-grid-size) * 49);*/
   height: calc(var(--valo-grid-size) * 54);
   display: flex;
   position: relative;
@@ -12,15 +13,15 @@
 }
 
 .date-picker .months {
-  width: calc(var(--valo-grid-size) * 41);
+  /*width: calc(var(--valo-grid-size) * 41);*/
   /* TODO should probably use two flex containers instead */
   height: calc(100% - var(--valo-grid-size) * 6.5);
   overflow: auto;
 
   /* TODO browser support for gradient masks is spotty (WebKit/Blink/Firefox53).
      Could look into using SVG masks for older Firefox, but doesn’t seem worth the trouble. */
-  -webkit-mask-image: linear-gradient(#000 85%, transparent);
-  mask-image: linear-gradient(#000 85%, transparent);
+  -webkit-mask-image: linear-gradient(transparent, #000 6%, #000 85%, transparent);
+  mask-image: linear-gradient(transparent, #000 6%, #000 85%, transparent);
 }
 
 .date-picker .years {
@@ -120,6 +121,10 @@
   font-weight: 500;
 }
 
+.date-picker .month-grid .today {
+  color: var(--valo-color-text-primary);
+}
+
 .date-picker .month-grid .selected {
   background-color: var(--valo-color-primary);
   border-radius: 7px;
@@ -163,9 +168,10 @@
 
 .date-picker.small-viewport {
   flex-direction: column;
-  max-width: 359px;
-  min-width: 300px;
   height: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: auto;
 }
 
 .date-picker.small-viewport .months,
@@ -224,7 +230,7 @@
 .date-picker.small-viewport .month-grid span {
   /* TODO should have min and max height on the whole picker instead, and let the day cells flex
   and try to fit inside iPhone 4 screen (may have to hide day names after a breakpoint perhaps) */
-  height: calc(var(--valo-grid-size) * 4.5);
+  /*height: calc(var(--valo-grid-size) * 4.5);*/
 }
 
 .date-picker.small-viewport .month-grid .weekday {
@@ -236,4 +242,14 @@
   order: 1;
   --valo-grid-size: 4px;
   --valo-font-size: 90%;
+}
+
+
+.date-picker.toolbar-on-top .toolbar {
+  bottom: auto;
+  top: 0;
+}
+
+.date-picker.toolbar-on-top .months {
+  align-self: flex-end;
 }
