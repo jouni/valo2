@@ -1,5 +1,7 @@
 .date-picker {
-  width: calc(var(--valo-grid-size) * 49);
+  width: 100%;
+  max-width: calc(var(--valo-grid-size) * 49);
+  min-width: 375px;
   height: calc(var(--valo-grid-size) * 54);
   display: flex;
   position: relative;
@@ -26,6 +28,7 @@
   transition: opacity 180ms;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 
 .date-picker .years::after {
@@ -35,7 +38,8 @@
   top: 49.7%;
   right: 0;
   border: 6px solid;
-  border-color: transparent var(--valo-color-text-tertiary) transparent transparent;
+  border-color: transparent var(--valo-color-text) transparent transparent;
+  opacity: 0.5;
 }
 
 .date-picker .years:hover {
@@ -51,7 +55,8 @@
   mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
 }
 
-.date-picker .years .mask div {
+.date-picker .years .mask div,
+.date-picker .years .mask span {
   height: calc(var(--valo-grid-size) * 5);
   font-size: calc(var(--valo-font-size) * 0.875);
   display: flex;
@@ -62,6 +67,10 @@
 .date-picker .years .focused {
   font-weight: 500;
   color: var(--valo-color-text-heading);
+}
+
+.date-picker .years .focused + span {
+  margin-top: -0.5em;
 }
 
 .date-picker .years .selected::before {
@@ -84,6 +93,7 @@
 
 .date-picker .month {
   padding: var(--valo-spacing-tall-s);
+  padding-bottom: var(--valo-spacing-xs);
   box-sizing: border-box;
 }
 
@@ -96,7 +106,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: calc(92% / 7);
+  width: calc(95% / 7);
   height: calc(var(--valo-grid-size) * 5);
   position: relative;
 }
@@ -106,22 +116,19 @@
   font-weight: 500;
 }
 
-.date-picker .month-grid .selected::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 4px;
-  right: 4px;
-  bottom: 4px;
-  left: 4px;
+.date-picker .month-grid .selected {
   background-color: var(--valo-color-primary);
-  border-radius: 3px;
+  border-radius: 7px;
+  background-clip: content-box;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .date-picker .month-grid .week {
-  width: 8%;
+  width: 5%;
   font-size: calc(var(--valo-font-size) * 0.75);
   color: var(--valo-color-text-tertiary);
+  transform: translateX(-2px);
 }
 
 .date-picker .month-grid .weekday {
@@ -146,7 +153,6 @@
 @media screen and (max-width: 1000px) {
   .date-picker {
     flex-direction: column;
-    width: 100%;
     min-width: 300px;
     height: auto;
   }
@@ -159,6 +165,15 @@
   .date-picker .years {
     order: 3;
     height: calc(var(--valo-grid-size) * 6);
+  }
+
+  .date-picker .years::after {
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: transparent transparent var(--valo-color-text-tertiary) transparent;
   }
 
   .date-picker .years .mask {
@@ -177,7 +192,7 @@
   }
 
   .date-picker .years .selected::before {
-    transform: translate(0.8em, 0.8em);
+    transform: translate(0.8em, -1em);
   }
 
   .date-picker .months {
@@ -191,11 +206,24 @@
   .date-picker .month {
     min-width: 100%;
     padding-top: 0;
+    padding-right: var(--valo-spacing-xxs);
+  }
+
+  .date-picker .month-grid span {
+    /* TODO should have min and max height on the whole picker instead, and let the day cells flex
+    and try to fit inside iPhone 4 screen (may have to hide day names after a breakpoint perhaps) */
+    height: calc(var(--valo-grid-size) * 4.5);
+  }
+
+  .date-picker .month-grid .weekday {
+    height: calc(var(--valo-grid-size) * 2);
   }
 
   .date-picker .toolbar {
     position: static;
     order: 1;
+    --valo-grid-size: 4px;
+    --valo-font-size: 90%;
   }
 
 }

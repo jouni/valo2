@@ -11,12 +11,14 @@ h1 {
   font-size: calc(var(--valo-font-size) * 3);
   margin-top: var(--valo-spacing-xxl);
   margin-bottom: var(--valo-spacing-xl);
+  -moz-osx-font-smoothing: auto;
 }
 
 h2 {
   font-size: calc(var(--valo-font-size) * 2);
   margin-top: var(--valo-spacing-xl);
   margin-bottom: var(--valo-spacing-l);
+  -moz-osx-font-smoothing: auto;
 }
 
 h3 {
@@ -24,6 +26,7 @@ h3 {
   font-weight: 500;
   margin-top: var(--valo-spacing-xl);
   margin-bottom: var(--valo-spacing-m);
+  letter-spacing: 0;
 }
 
 h4 {
@@ -55,6 +58,7 @@ p.ingress {
   line-height: 1.5;
   font-weight: 300;
   margin-bottom: var(--valo-spacing-l);
+  -moz-osx-font-smoothing: auto;
 }
 
 p.small {
